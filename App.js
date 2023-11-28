@@ -4,11 +4,12 @@ import { StyleSheet} from "react-native";
 import { GlobalStyles } from "./constants/GlobalStyles";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import AuthContextProvider, { AuthContext } from "./store/AuthContext";
+// Screens
 import LoginScreen from "./screens/LoginScreen";
 import ChoiceScreen from "./screens/ChoiceScreen";
 import SignUpScreen from "./screens/SignUpScreen";
-import AuthContextProvider, { AuthContext } from "./store/AuthContext";
-import PlaceholderScreen from "./screens/PlaceholderScreen";
+import ProfileConfiguration from "./screens/ProfileConfiguration";
 
 
 const Stack = createNativeStackNavigator();
@@ -60,7 +61,7 @@ function AuthenticatedStack() {
 				},
 			}}
 		>
-			<Stack.Screen name="PlaceholderScreen" component={PlaceholderScreen} />
+			<Stack.Screen name="ProfileConfiguration" component={ProfileConfiguration} />
 			<Stack.Screen name="ChoiceScreen" component={ChoiceScreen} />
 		</Stack.Navigator>
 	);
