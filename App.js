@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useContext } from "react";
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 import { GlobalStyles } from "./constants/GlobalStyles";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -10,10 +10,9 @@ import LoginScreen from "./screens/LoginScreen";
 import ChoiceScreen from "./screens/ChoiceScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ProfileConfiguration from "./screens/ProfileConfiguration";
-
-
+// Components
+import IconButton from "./components/UI/IconButton";
 const Stack = createNativeStackNavigator();
-
 function UnAuthStack() {
 	return (
 		<Stack.Navigator
@@ -48,6 +47,8 @@ function UnAuthStack() {
 	);
 }
 function AuthenticatedStack() {
+	const authCtx = useContext(AuthContext);
+
 	return (
 		<Stack.Navigator
 			screenOptions={{
@@ -59,9 +60,20 @@ function AuthenticatedStack() {
 				headerTitleStyle: {
 					fontWeight: "bold",
 				},
+				headerLeft: ({ tintColor }) => {
+					<IconButton
+						icon="exit"
+						color={tintColor}
+						size={24}
+						onTap={authCtx.logout}
+					/>;
+				},
 			}}
 		>
-			<Stack.Screen name="ProfileConfiguration" component={ProfileConfiguration} />
+			<Stack.Screen
+				name="ProfileConfiguration"
+				component={ProfileConfiguration}
+			/>
 			<Stack.Screen name="ChoiceScreen" component={ChoiceScreen} />
 		</Stack.Navigator>
 	);
