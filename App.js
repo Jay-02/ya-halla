@@ -23,8 +23,8 @@ function UnAuthStack() {
 				headerTintColor: GlobalStyles.colors.text,
 				headerTitleAlign: "center",
 				headerTitleStyle: {
-					fontWeight: "bold",
-				},
+					fontFamily:'Almarai-Bold'
+				}
 			}}
 		>
 			<Stack.Screen
@@ -32,7 +32,7 @@ function UnAuthStack() {
 				component={LoginScreen}
 				options={{
 					headerTitle: "تسجيل الدخول",
-					headerTitleAlign: "center",
+
 				}}
 			/>
 			<Stack.Screen
@@ -40,7 +40,7 @@ function UnAuthStack() {
 				component={SignUpScreen}
 				options={{
 					headerTitle: "إنشاء حساب",
-					headerTitleAlign: "center",
+
 				}}
 			/>
 		</Stack.Navigator>
@@ -58,21 +58,24 @@ function AuthenticatedStack() {
 				headerTintColor: GlobalStyles.colors.text,
 				headerTitleAlign: "center",
 				headerTitleStyle: {
-					fontWeight: "bold",
+					fontFamily:'Almarai-Bold'
 				},
-				headerLeft: ({ tintColor }) => {
+				headerRight: ({ tintColor }) => 
 					<IconButton
-						icon="exit"
+						name={"exit-outline"}
 						color={tintColor}
-						size={24}
 						onTap={authCtx.logout}
-					/>;
-				},
+					/>
+				,
 			}}
 		>
 			<Stack.Screen
 				name="ProfileConfiguration"
 				component={ProfileConfiguration}
+				options={{
+					headerTitle: "المعلومات الشخصية",
+					headerTitleAlign: "center",
+				}}
 			/>
 			<Stack.Screen name="ChoiceScreen" component={ChoiceScreen} />
 		</Stack.Navigator>

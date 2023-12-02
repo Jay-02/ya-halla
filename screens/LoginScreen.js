@@ -31,6 +31,8 @@ const LoginScreen = () => {
       'Almarai-Regular': require( fontPath + 'Almarai-Regular.ttf'),
       'Almarai-Bold': require( fontPath + 'Almarai-Bold.ttf'),
       'Almarai-Light': require( fontPath + 'Almarai-Light.ttf'),
+      'Almarai-ExtraBold': require( fontPath + 'Almarai-ExtraBold.ttf'),
+      
 
     })
     const onLayoutRootView = useCallback(async () => {

@@ -4,38 +4,68 @@ import { useState } from "react";
 import { GlobalStyles } from "../../constants/GlobalStyles";
 import PrimaryButton from "../UI/PrimaryButton";
 import { pickImage } from "../../helper/Images";
+import { storeUserInfo } from "../../helper/http";
 function ProfileConfigurationForm() {
 	const [enteredPhoneNumber, setEnteredPhoneNumber] = useState("");
-	function setPhoneNumberHandler(enteredValue) {
-		setEnteredPhoneNumber(enteredPhoneNumber);
+	const [enteredName, setEnteredName] = useState("");
+	function updateInputValueHandler(inputType, enteredValue) {
+		switch (inputType) {
+			case "name":
+				setEnteredName(enteredValue);
+				break;
+			case "phoneNumber":
+				setEnteredPhoneNumber(enteredValue);
+		}
+	}
+	function submitHandler() {
+		onSubmit({
+			name: enteredName,
+			phoneNumber: enteredPhoneNumber,
+			// profilePicture
+		});
 	}
 	return (
 		<View>
-            <View style = {styles.card}>
-			<Input label="الاسم الكامل" keyboardType="default" />
-			<Input label="رقم الهاتف"  />
-			<PrimaryButton onTap={pickImage}>اختيار صورة شخصية</PrimaryButton>
-            </View>
-
-
+			<View style={styles.card}>
+				<Input
+					label="الاسم الكامل"
+					keyboardType="default"
+					value={enteredName}
+					onUpdateValue={updateInputValueHandler.bind(this, "name")}
+				/>
+				<Input
+					label="رقم الهاتف"
+					value={enteredPhoneNumber}
+					onUpdateValue={updateInputValueHandler.bind(this, "phoneNumber")}
+                    keyboardType={"number-pad"}
+				/>
+				<PrimaryButton onTap={pickImage}>اختيار صورة شخصية</PrimaryButton>
+				<View style={styles.submitButtonContainer}>
+					<PrimaryButton onTap={submitHandler}> استمرار</PrimaryButton>
+				</View>
+			</View>
 		</View>
 	);
 }
 export default ProfileConfigurationForm;
 const styles = StyleSheet.create({
-    card: {
-        marginTop: 64,
-        marginHorizontal:32,
-        padding: 16,
-        borderRadius: 8,
-        backgroundColor: GlobalStyles.colors.primary,
-        elevation: 2,
-        shadowColor: 'black',
-        shadowOffset: { width: 1, height: 1 },
-    shadowOpacity: 0.35,
-    shadowRadius: 4,
-    },
-    buttons: {
-        marginTop: 8,
-    }
-})
+	card: {
+		marginTop: 64,
+		marginHorizontal: 32,
+		padding: 16,
+		borderRadius: 8,
+		backgroundColor: GlobalStyles.colors.primary,
+		elevation: 2,
+		shadowColor: "black",
+		shadowOffset: { width: 1, height: 1 },
+		shadowOpacity: 0.35,
+		shadowRadius: 4,
+	},
+	buttons: {
+		marginTop: 16,
+	},
+	submitButtonContainer: {
+		marginTop: 36,
+		// width: "50%",
+	},
+});

@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     marginVertical: 8
   },
   label: {
+    fontFamily:'Almarai-Bold',
     fontSize: 12,
     color: GlobalStyles.colors.text,
     marginBottom: 4,

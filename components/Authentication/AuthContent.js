@@ -52,7 +52,7 @@ export default function AuthContent({isLogin, onAuthenticate}) {
             />
             <View style = {styles.buttons}>
                 <FlatButton onPress = {switchAuthModeHandler}>
-                    {isLogin ? 'انشاء حساب جديد' : 'تسجيل الدخول'}
+                    {isLogin ? 'انشاء حساب جديد' : 'العودة الى تسجيل الدخول'}
                 </FlatButton>
             </View>
         </View>

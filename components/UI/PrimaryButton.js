@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 	fontFamily:'Almarai-Bold',
 	color: GlobalStyles.colors.background,
     alignItems:'center',
-
+	textAlign:'center'
 
 	},
   pressed:{
