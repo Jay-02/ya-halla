@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 import { GlobalStyles } from '../../constants/GlobalStyles';
+import {Almarai_700Bold} from 'expo-font'
 
 
 function Input({
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     marginVertical: 8
   },
   label: {
-    fontFamily:'Almarai-Bold',
+    fontFamily: GlobalStyles.fonts.bold,
     fontSize: 12,
     color: GlobalStyles.colors.text,
     marginBottom: 4,

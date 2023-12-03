@@ -9,11 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/almarai": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.16",
     "axios": "^1.6.2",
     "expo": "~49.0.15",
+    "expo-app-loading": "^2.1.1",
     "expo-font": "~11.4.0",
     "expo-image-picker": "~14.3.2",
     "expo-splash-screen": "~0.20.5",

@@ -8,5 +8,11 @@ export const GlobalStyles = {
         error100: '#EB9480',
         error200: '#EE5533'
        },
+    fonts: {
+        bold: "Almarai_700Bold",
+        regular:"Almarai_400Regular",
+        light:"Almarai_300Light",
+        extraBold:"Almarai_800ExtraBold"
+    }
        
 }

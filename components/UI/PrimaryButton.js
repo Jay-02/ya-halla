@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	text: {
-	fontFamily:'Almarai-Bold',
+	fontFamily:GlobalStyles.fonts.bold,
 	color: GlobalStyles.colors.background,
     alignItems:'center',
 	textAlign:'center'

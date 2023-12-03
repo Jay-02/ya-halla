@@ -13,7 +13,7 @@ export default Label;
 
 const styles = StyleSheet.create({
 	text: {
-		fontFamily:'Almarai-Bold',
+		fontFamily:GlobalStyles.fonts.bold,
 		fontSize: 12,
         fontWeight:"bold",
 		color: GlobalStyles.colors.secondary,

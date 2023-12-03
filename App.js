@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { GlobalStyles } from "./constants/GlobalStyles";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,6 +12,17 @@ import SignUpScreen from "./screens/SignUpScreen";
 import ProfileConfiguration from "./screens/ProfileConfiguration";
 // Components
 import IconButton from "./components/UI/IconButton";
+import AppLoading from 'expo-app-loading'
+
+import {
+	useFonts,
+	Almarai_300Light,
+	Almarai_400Regular,
+	Almarai_700Bold,
+	Almarai_800ExtraBold,
+  } from '@expo-google-fonts/almarai';
+
+
 const Stack = createNativeStackNavigator();
 function UnAuthStack() {
 	return (
@@ -23,8 +34,8 @@ function UnAuthStack() {
 				headerTintColor: GlobalStyles.colors.text,
 				headerTitleAlign: "center",
 				headerTitleStyle: {
-					fontFamily:'Almarai-Bold'
-				}
+					fontFamily: GlobalStyles.fonts.bold,
+				},
 			}}
 		>
 			<Stack.Screen
@@ -32,7 +43,6 @@ function UnAuthStack() {
 				component={LoginScreen}
 				options={{
 					headerTitle: "تسجيل الدخول",
-
 				}}
 			/>
 			<Stack.Screen
@@ -40,7 +50,6 @@ function UnAuthStack() {
 				component={SignUpScreen}
 				options={{
 					headerTitle: "إنشاء حساب",
-
 				}}
 			/>
 		</Stack.Navigator>
@@ -58,15 +67,15 @@ function AuthenticatedStack() {
 				headerTintColor: GlobalStyles.colors.text,
 				headerTitleAlign: "center",
 				headerTitleStyle: {
-					fontFamily:'Almarai-Bold'
+					fontFamily: GlobalStyles.fonts.bold,
 				},
-				headerRight: ({ tintColor }) => 
+				headerRight: ({ tintColor }) => (
 					<IconButton
 						name={"exit-outline"}
 						color={tintColor}
 						onTap={authCtx.logout}
 					/>
-				,
+				),
 			}}
 		>
 			<Stack.Screen
@@ -83,7 +92,6 @@ function AuthenticatedStack() {
 }
 function Navigation() {
 	const authCtx = useContext(AuthContext);
-
 	return (
 		<NavigationContainer>
 			{!authCtx.isAuthenticated && <UnAuthStack />}
@@ -92,6 +100,15 @@ function Navigation() {
 	);
 }
 export default function App() {
+	let [fontsLoaded] = useFonts({
+		Almarai_300Light,
+		Almarai_400Regular,
+		Almarai_700Bold,
+		Almarai_800ExtraBold,
+	  });
+	  if(!fontsLoaded){
+		return <AppLoading/>
+	  }
 	return (
 		<>
 			<StatusBar style="auto" />

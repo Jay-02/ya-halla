@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.colors.accent,
   },
   text: {
-    fontFamily: "Almarai-Bold",
+    fontFamily: GlobalStyles.fonts.bold,
     fontSize: 24,
     color: GlobalStyles.colors.text,
     justifyContent: 'center',

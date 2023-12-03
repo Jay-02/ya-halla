@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         
 	},
 	text: {
-	fontFamily:'Almarai-Bold',
+	fontFamily:GlobalStyles.fonts.bold,
 	color: GlobalStyles.colors.background,
     alignItems:'center',
 

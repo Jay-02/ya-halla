@@ -1,4 +1,5 @@
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { GlobalStyles } from '../../constants/GlobalStyles';
 
 function LoadingOverlay({ message }) {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     padding: 32,
   },
   message: {
-    fontFamily: 'Almarai-Bold',
+    fontFamily: GlobalStyles.fonts.bold,
     fontSize: 16,
     marginBottom: 12,
   },

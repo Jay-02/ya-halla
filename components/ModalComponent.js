@@ -4,6 +4,7 @@ import  {GlobalStyles}  from "../constants/GlobalStyles";
 import  IconButton  from "./UI/IconButton";
 import Label  from './UI/Label'
 import PrimaryButton from "./UI/PrimaryButton";
+import { Almarai_700Bold } from "@expo-google-fonts/almarai";
 
 const ModalComponent = ({ isVisible, onClose, children, ButtonTap, label })=> {
 	return (
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
 	},
 	label:{
 		color:GlobalStyles.colors.text,
-		fontFamily: 'Almarai-Bold',
+		fontFamily:  GlobalStyles.fonts.bold,
+		fontWeight: '700',
 		fontSize:24,
 		
 	}
