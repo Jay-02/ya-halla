@@ -1,9 +1,12 @@
 import axios from "axios"
+import { doc, setDoc } from "firebase/firestore"
+import { auth } from "../firebase-config"
+import {db} from '../firebase-config'
 
-const BACKEND_URL = "https://ya-halla-db-default-rtdb.europe-west1.firebasedatabase.app/"
-export const storeUserInfo = (userData)=> {
-axios.post(BACKEND_URL + '/test.json', {
-    userData: userData,
-    test:'test'
-} )
+export async function setProfileData(fullName, phoneNumber){
+    const profileData = await setDoc(doc(db, fullName, phoneNumber),{
+        fullName:fullName,
+        phoneNumber:phoneNumber,
+        // nationality:nationality
+    })
 }

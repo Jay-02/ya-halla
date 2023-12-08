@@ -4,25 +4,29 @@ import { useState } from "react";
 import { GlobalStyles } from "../../constants/GlobalStyles";
 import PrimaryButton from "../UI/PrimaryButton";
 import { pickImage } from "../../helper/Images";
-import { storeUserInfo } from "../../helper/http";
+import { useNavigation } from '@react-navigation/native'
+import {setProfileData} from '../../helper/http'
+
 function ProfileConfigurationForm() {
+	const navigation = useNavigation()
 	const [enteredPhoneNumber, setEnteredPhoneNumber] = useState("");
 	const [enteredName, setEnteredName] = useState("");
-	function updateInputValueHandler(inputType, enteredValue) {
+	const updateInputValueHandler = (inputType, enteredValue)=> {
 		switch (inputType) {
 			case "name":
 				setEnteredName(enteredValue);
 				break;
 			case "phoneNumber":
 				setEnteredPhoneNumber(enteredValue);
+				break;
 		}
 	}
-	function submitHandler() {
-		onSubmit({
-			name: enteredName,
-			phoneNumber: enteredPhoneNumber,
-			// profilePicture
-		});
+	async function submitHandler(){
+		await setProfileData(enteredName, enteredPhoneNumber)
+		const navigateToChoice = ()=>{
+			navigation.navigate('ChoiceScreen')
+		}
+		navigateToChoice()
 	}
 	return (
 		<View>
