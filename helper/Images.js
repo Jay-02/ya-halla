@@ -1,10 +1,13 @@
 import * as ImagePicker from 'expo-image-picker'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { Alert } from 'react-native';
 import { storeProfilePicture } from './storage';
+import { ProfileDataContext } from '../store/ProfileDataContext';
+
 export async function pickImage() {
 
+		const profileDataCtx =useContext(ProfileDataContext)
 
 		let result = await ImagePicker.launchImageLibraryAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -17,11 +20,12 @@ export async function pickImage() {
 
 		if (!result.canceled) {
 			
-			
-			 const  picture = result.assets.pop()
-			 console.log(picture.width)
-			
-		} else {
-			Alert.alert('no image imported ')
-		}
+			 const image = (result.assets[0].uri).then((image)=>{
+			profileDataCtx.addProfilePictureUri(image)
+
+			 })
+			 
+			} else {
+				Alert.alert('no image imported ')
+			}
 	};

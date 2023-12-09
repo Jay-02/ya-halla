@@ -1,30 +1,35 @@
 import { createContext, useState, useEffect } from "react";
 
 export const ProfileDataContext = createContext({
-    fullName: (fullName)=>{},
-    phoneNumber:(phoneNumber)=>{},
-    profilePicUri:(profilePicUri)=>{}
+    fullName:'',
+    addFullName: ()=>{},
+    phoneNumber:'',
+    addPhoneNumber:(phoneNumber)=>{},
+    profilePictureUri:null,
+    addProfilePictureUri:(profilePictureUri)=>{}
     //Nationality?
 })
 function ProfileDataContextProvider({children}){
-    const [name, setName] = useState("")
+    const [name, setName] = useState()
     const [number, setNumber] = useState()
     const [uri, setUri] = useState()
-    function setFullNameHandler(){
+    function addFullName(name){
         setName(name)
     }
-    function setPhoneNumberHandler(){
-        setNumber(number)
+    function addPhoneNumber(phoneNumber){
+        setNumber(phoneNumber)
     }
-    function setFullNameHandler(){
-        setUri(uri)
+    function addProfilePictureUri(profilePictureUri){
+        setUri(profilePictureUri)
     }
 const value = {
     fullName: name,
-    addFullname: setFullNameHandler,
-    addPhoneNumber: setPhoneNumberHandler,
+    addFullname: addFullName,
+    addPhoneNumber: addPhoneNumber,
     phoneNumber:number,
-    addProfilePictureUri:setUri,
+    addProfilePictureUri:addProfilePictureUri,
     profilePictureUri:uri
 }
+return <ProfileDataContext.Provider value={value}>{children}</ProfileDataContext.Provider>
 }
+export default ProfileDataContextProvider
