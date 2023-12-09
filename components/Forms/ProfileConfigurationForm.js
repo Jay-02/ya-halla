@@ -6,6 +6,7 @@ import PrimaryButton from "../UI/PrimaryButton";
 import { pickImage } from "../../helper/Images";
 import { useNavigation } from '@react-navigation/native'
 import {setProfileData} from '../../helper/http'
+import { storeProfilePicture } from "../../helper/storage";
 
 function ProfileConfigurationForm() {
 	const navigation = useNavigation()
@@ -23,6 +24,7 @@ function ProfileConfigurationForm() {
 	}
 	async function submitHandler(){
 		await setProfileData(enteredName, enteredPhoneNumber)
+		await storeProfilePicture(pickImage)
 		const navigateToChoice = ()=>{
 			navigation.navigate('ChoiceScreen')
 		}

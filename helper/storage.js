@@ -1,10 +1,9 @@
 import { ref, uploadBytes } from "firebase/storage";
 import { auth, storage } from "../firebase-config";
 
-const profilePicFolderRef = ref(storage, `ProfilePictures/${auth.currentUser.uid}`,"image"  )
-export function storeProfilePicture(image){
-
-    uploadBytes(profilePicFolderRef, image).then((snapshot)=>{
-        console.log("Uploaded")
-    })
-}
+const profilePicFolderRef = ref(storage, `ProfilePictures/${auth?.currentUser?.uid}`,"image"  )
+export async function storeProfilePicture(uri, fileType){
+    const response = await fetch(uri)
+    const blob = await response.blob()
+    const uploadTask = uploadBytes(profilePicFolderRef, blob)
+    }

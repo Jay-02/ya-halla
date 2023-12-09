@@ -16,8 +16,10 @@ export async function pickImage() {
 		});
 
 		if (!result.canceled) {
-
-			 storeProfilePicture(result.assets[0].uri)
+			
+			
+			 const  picture = result.assets.pop()
+			 console.log(picture.width)
 			
 		} else {
 			Alert.alert('no image imported ')
